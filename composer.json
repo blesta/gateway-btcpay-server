@@ -1,0 +1,10 @@
+{
+    "name": "blesta/btcpay_server",
+    "description": "BTCPay Server",
+    "license": "proprietary",
+    "type": "blesta-gateway-nonmerchant",
+    "require": {
+        "blesta/composer-installer": "~1.0",
+        "btcpayserver/btcpayserver-greenfield-php": "~1.3"
+    }
+}
