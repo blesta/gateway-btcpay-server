@@ -3,7 +3,7 @@
  * en_us language for the BTCPay Server gateway.
  */
 // Basics
-$lang['BtcpayServer.name'] = 'BitCoin (BTCPay)';
+$lang['BtcpayServer.name'] = 'BTCPay (BitCoin)';
 $lang['BtcpayServer.description'] = 'BTCPayServer is a self-hosted, Bitcoin payment gateway with no fees.';
 
 
