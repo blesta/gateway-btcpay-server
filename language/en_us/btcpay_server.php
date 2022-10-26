@@ -3,7 +3,7 @@
  * en_us language for the BTCPay Server gateway.
  */
 // Basics
-$lang['BtcpayServer.name'] = 'BTCPay Server';
+$lang['BtcpayServer.name'] = 'BTCPay (Bitcoin)';
 $lang['BtcpayServer.description'] = 'BTCPayServer is a self-hosted, Bitcoin payment gateway with no fees.';
 
 
@@ -26,7 +26,6 @@ $lang['BtcpayServer.meta.transaction_speed'] = 'Transaction Speed';
 $lang['BtcpayServer.meta.webhook_secret'] = 'Webhook Secret';
 
 
-$lang['BtcpayServer.transaction_speed'] = 'Transaction Speed';
 $lang['BtcpayServer.transaction.speed.high'] = 'High';
 $lang['BtcpayServer.transaction.speed.medium'] = 'Medium';
 $lang['BtcpayServer.transaction.speed.low'] = 'Low';
