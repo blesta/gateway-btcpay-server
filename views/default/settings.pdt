@@ -29,6 +29,19 @@
             $this->Form->fieldText('webhook_secret', ($meta['webhook_secret'] ?? null), ['id' => 'webhook_secret', 'class' => 'block']);
             ?>
         </li>
+        <li>
+            <?php
+            $this->Form->label($this->_('BtcpayServer.meta.payment_method', true));
+
+            $this->Form->fieldRadio('payment_method', 'client', (($meta['payment_method'] ?? 'client') == 'client'), ['id'=>'payment_method_client']);
+            $this->Form->label($this->_('BtcpayServer.meta.payment_method_client', true), 'payment_method_client', ['class'=>'inline']);
+            ?>
+            <br />
+            <?php
+            $this->Form->fieldRadio('payment_method', 'store', (($meta['payment_method'] ?? 'client') == 'store'), ['id'=>'payment_method_store']);
+            $this->Form->label($this->_('BtcpayServer.meta.payment_method_store', true), 'payment_method_store', ['class'=>'inline']);
+            ?>
+        </li>
     </ul>
 
     <div class="title_row">

@@ -117,13 +117,18 @@ class BtcpayServer extends NonmerchantGateway
                         'message' => Language::_('BtcpayServer.!error.transaction_speed.valid', true)
                     ]
                 ],
+                'payment_method' => [
+                    'valid' => [
+                        'rule' => ['in_array', ['client', 'store']],
+                        'message' => Language::_('BtcpayServer.!error.payment_method.valid', true)
+                    ]
+                ],
                 'store_id' => [
                     'valid' => [
                         'rule' => function ($store_id) use ($meta) {
                             try {
                                 $api = $this->getApi($meta);
                                 $store = $api->Store->getStore($store_id);
-
                                 return !empty($store);
                             } catch (Throwable $e) {
                                 return false;
@@ -250,6 +255,9 @@ class BtcpayServer extends NonmerchantGateway
 
         $redirect_url .= 'price=' . $amount . '&posData=' . $pos_data . '&currency=' . $currency;
 
+        // Set payment method
+        $payment_method = $this->meta['payment_method'] ?? 'client';
+
         // Set invoice options and speed policy
         $invoice_options = new InvoiceCheckoutOptions();
         $speed_policy = $invoice_options::SPEED_HIGH;
@@ -264,9 +272,25 @@ class BtcpayServer extends NonmerchantGateway
                 $speed_policy = $invoice_options::SPEED_LOW;
                 break;
         }
-        $invoice_options->setSpeedPolicy($speed_policy)
-            ->setPaymentMethods(['BTC'])
-            ->setRedirectURL($redirect_url);
+
+        // Fetch store
+        $store = $api->Store->getStore($this->meta['store_id']);
+
+        $default_payment_method = null;
+        try {
+            $default_payment_method = $store->getDefaultPaymentMethod();
+        } catch (Throwable $e) {
+            // Nothing to do
+        }
+
+        if ($payment_method === 'client') {
+            $invoice_options->setSpeedPolicy($speed_policy)
+                ->setRedirectURL($redirect_url);
+        } else if ($payment_method === 'store') {
+            $invoice_options->setSpeedPolicy($speed_policy)
+                ->setPaymentMethods([$default_payment_method ?? 'BTC'])
+                ->setRedirectURL($redirect_url);
+        }
 
         // Create invoice
         try {
