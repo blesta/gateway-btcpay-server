@@ -10,6 +10,7 @@ $lang['BtcpayServer.description'] = 'BTCPayServer is a self-hosted, Bitcoin paym
 // Errors
 $lang['BtcpayServer.!error.server_url.valid'] = 'Server URL invalid.';
 $lang['BtcpayServer.!error.transaction_speed.valid'] = 'Please select a valid transaction speed.';
+$lang['BtcpayServer.!error.payment_method.valid'] = 'Please select a valid payment method.';
 $lang['BtcpayServer.!error.store_id.valid'] = 'Store ID invalid.';
 $lang['BtcpayServer.!error.api_key.valid'] = 'API Key invalid.';
 $lang['BtcpayServer.!error.failed.response'] = 'The transaction could not be processed.';
@@ -24,7 +25,10 @@ $lang['BtcpayServer.meta.store_id'] = 'Store ID';
 $lang['BtcpayServer.meta.api_key'] = 'API Key';
 $lang['BtcpayServer.meta.transaction_speed'] = 'Transaction Speed';
 $lang['BtcpayServer.meta.webhook_secret'] = 'Webhook Secret';
+$lang['BtcpayServer.meta.payment_method'] = 'Payment Method';
 
+$lang['BtcpayServer.meta.payment_method_client'] = 'Allow the client to choose payment method.';
+$lang['BtcpayServer.meta.payment_method_store'] = 'Force store default as configured in BTCPay Server.';
 
 $lang['BtcpayServer.transaction.speed.high'] = 'High';
 $lang['BtcpayServer.transaction.speed.medium'] = 'Medium';
